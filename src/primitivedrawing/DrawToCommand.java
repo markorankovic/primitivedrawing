@@ -8,9 +8,6 @@ public class DrawToCommand extends DrawCommand {
 
 	@Override
 	public void execution() {
-		if (!validNumberOfArguments(2)) {
-			return;
-		}
 		DrawingContext dc = ((DrawingCommandProcessor) processor).dc;
 		if (dc == null) {
 			System.out.println("No drawing context");

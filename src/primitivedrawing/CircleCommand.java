@@ -8,9 +8,6 @@ public class CircleCommand extends DrawCommand {
 	
 	@Override
 	public void execution() {
-		if (!validNumberOfArguments(1)) {
-			return;
-		}
 		DrawingContext dc = ((DrawingCommandProcessor) processor).dc;
 		if (dc == null) {
 			System.out.println("No drawing context");
