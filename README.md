@@ -1,12 +1,16 @@
 # primitivedrawing
 Created by Marko Ranković
 
+Description:
+
 This project demonstrates the ability to draw basic primitives using string commands which subsequently are parsed into command classes to then be executed all together. Commands are not case sensitive.
+
 
 Opening and Saving:
 
 CTRL + O for opening.
 CTRL + S for saving.
+
 
 List of commands:
 
