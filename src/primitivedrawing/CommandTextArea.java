@@ -17,7 +17,7 @@ public class CommandTextArea extends TextArea implements KeyListener {
 	}
 	
 	void sendInput(String input, CommandTextArea to) {
-		to.setText(to.getText() + input);
+		to.setText(to.getText() + "\n" + input);
 	}
 
 	@Override
@@ -29,8 +29,10 @@ public class CommandTextArea extends TextArea implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (isEditable()) {
-				sendInput(getText(), frame.commandList);
+				String input = getText().replaceAll("\\n", "");
+				sendInput(input, frame.commandList);
 				frame.commandEntry.setText("");
+				frame.commandProcessor.parseCommandString(input);
 			}
 		}
 	}

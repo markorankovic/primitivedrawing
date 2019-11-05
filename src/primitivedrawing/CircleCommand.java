@@ -4,6 +4,7 @@ public class CircleCommand extends DrawCommand {
 
 	public CircleCommand(CommandProcessor processor) {
 		super(processor);
+		numberOfArguments = 1;
 	}
 	
 	@Override
@@ -19,6 +20,21 @@ public class CircleCommand extends DrawCommand {
 			System.out.println("Invalid argument(s)");
 			return;
 		}
+	}
+	
+	@Override
+	boolean validArgumentTypes() {
+		try {
+			Integer.parseInt(arguments.get(0));
+		} catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	boolean argumentsValid() {
+		return validNumberOfArguments() && validArgumentTypes();
 	}
 	
 }

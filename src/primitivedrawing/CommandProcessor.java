@@ -9,12 +9,13 @@ import java.util.Scanner;
 
 public class CommandProcessor {
 
-	static HashMap<String, Class<Command>> commandReference = new HashMap<String, Class<Command>>();
+	static HashMap<String, Class<? extends Command>> commandReference = new HashMap<String, Class<? extends Command>>();
 	
 	ArrayList<Command> commands = new ArrayList<Command>();
 	
-	void initializeCommandReference() {
-	}
+	CommandTextArea commandList;
+	
+	void initializeCommandReference() { }
 					
 	ArrayList<String> getProcessedInput(String input) {
 		String lowercaseInput = input.toLowerCase();
@@ -38,14 +39,47 @@ public class CommandProcessor {
 		commands.removeAll(commands);
 	}
 	
-	Command createCommand(ArrayList<String> processedInput) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
-		String key = processedInput.get(0);
-		if (commandReference.containsKey(key)) {
-			Class<Command> cls = commandReference.get(processedInput.get(0));
-			Command command = cls.getDeclaredConstructor().newInstance();
-			setArguments(command, processedInput);
-			return command.argumentsValid() ? command : null;
+	void reportInvalidToCommandLine() {
+		if (commandList != null) {
+			commandList.setText(commandList.getText() + "\n" + "Invalid command.");
 		}
+	}
+		
+	Command parseCommandString(String commandString) {
+		Command command = createCommand(getProcessedInput(commandString));
+		System.out.println(command);
+		if (command == null) {
+			reportInvalidToCommandLine();
+			return null;
+		}
+		if (command.getClass() == RunCommand.class) {
+			runCommands();
+			commands.clear();
+			return command;
+		}
+		addCommand(command);
+		System.out.println(commands);
+		return command;
+	}
+	
+	void runCommands() {
+		for (Command command : commands) {
+			command.execution();
+		}
+	}
+	
+	Command createCommand(ArrayList<String> processedInput) {
+		try {
+			String key = processedInput.get(0);
+			if (commandReference.containsKey(key)) {
+				Class<? extends Command> cls = commandReference.get(processedInput.get(0));
+				Command command;
+				command = cls.getDeclaredConstructor(CommandProcessor.class).newInstance(this);
+				System.out.println(command);
+				setArguments(command, processedInput);
+				return command.argumentsValid() ? command : null;
+			}
+		} catch (Exception e) { }
 		return null;
 	}
 	
@@ -55,7 +89,7 @@ public class CommandProcessor {
 		}
 	}
 	
-	void loadCommandsFromFile(String fileName) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	void loadCommandsFromFile(String fileName) {
 		ArrayList<String> input = readInputFromFile(fileName);
 		ArrayList<Command> commandList = new ArrayList<Command>();
 		for (String line : input) {

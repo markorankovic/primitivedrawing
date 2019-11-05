@@ -12,7 +12,7 @@ public class Command implements Executable {
 	
 	public ArrayList<String> arguments = new ArrayList<String>();
 	
-	int numberOfArguments;
+	int numberOfArguments = 0;
 		
 	@Override
 	public void execution() { }
@@ -30,7 +30,7 @@ public class Command implements Executable {
 	}
 	
 	boolean argumentsValid() {
-		return validNumberOfArguments() && validArgumentTypes();
+		return validNumberOfArguments() && arguments.size() == 0;
 	}
 
 }

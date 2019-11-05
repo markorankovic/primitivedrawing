@@ -7,14 +7,14 @@ public class DrawingCommandProcessor extends CommandProcessor {
 	@SuppressWarnings("unchecked")
 	@Override
 	void initializeCommandReference() {
-		commandReference.put("rect", (Class<Command>) RectCommand.class.getSuperclass());
-		commandReference.put("circle", (Class<Command>) CircleCommand.class.getSuperclass());
-		commandReference.put("triangle", (Class<Command>) TriangleCommand.class.getSuperclass());
-		commandReference.put("drawto", (Class<Command>) DrawToCommand.class.getSuperclass());
-		commandReference.put("position", (Class<Command>) PositionCommand.class.getSuperclass());
-		commandReference.put("clear", (Class<Command>) ClearCommand.class.getSuperclass());
-		commandReference.put("reset", (Class<Command>) ResetCommand.class.getSuperclass());
-		commandReference.put("run", (Class<Command>) RunCommand.class.getSuperclass());
+		commandReference.put("rect", (Class<? extends Command>) RectCommand.class);
+		commandReference.put("circle", (Class<? extends Command>) CircleCommand.class);
+		commandReference.put("triangle", (Class<? extends Command>) TriangleCommand.class);
+		commandReference.put("drawto", (Class<? extends Command>) DrawToCommand.class);
+		commandReference.put("position", (Class<? extends Command>) PositionCommand.class);
+		commandReference.put("clear", (Class<? extends Command>) ClearCommand.class);
+		commandReference.put("reset", (Class<? extends Command>) ResetCommand.class);
+		commandReference.put("run", (Class<? extends Command>) RunCommand.class);
 	}
 		
 	public DrawingCommandProcessor() {
@@ -25,6 +25,22 @@ public class DrawingCommandProcessor extends CommandProcessor {
 	public DrawingCommandProcessor(DrawingContext dc) {
 		this();
 		this.dc = dc;
+	}
+	
+	void setFocusToGraphics() {
+		dc.getFocus();
+	}
+	
+	@Override
+	Command parseCommandString(String commandString) {
+		Command command = super.parseCommandString(commandString);
+		if (command == null) {
+			return null;
+		}
+		if (command.getClass() == RunCommand.class) {
+			setFocusToGraphics();
+		}
+		return command;
 	}
 	
 }

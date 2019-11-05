@@ -4,8 +4,9 @@ public class RectCommand extends DrawCommand {
 
 	public RectCommand(CommandProcessor processor) {
 		super(processor);
+		this.numberOfArguments = 2;
 	}
-	
+		
 	@Override
 	public void execution() {
 		DrawingContext dc = ((DrawingCommandProcessor) processor).dc;
@@ -21,4 +22,20 @@ public class RectCommand extends DrawCommand {
 		}
 	}
 		
+	@Override
+	boolean argumentsValid() {
+		return validNumberOfArguments() && validArgumentTypes();
+	}
+	
+	@Override
+	boolean validArgumentTypes() {
+		try {
+			Integer.parseInt(arguments.get(0));
+			Integer.parseInt(arguments.get(1));
+		} catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
 }

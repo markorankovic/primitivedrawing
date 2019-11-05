@@ -22,6 +22,7 @@ public class CommandFrame extends javax.swing.JFrame {
 		listPanel.add(commandList);
 		listPanel.add(commandEntry);
 		add(listPanel);
+		commandProcessor.commandList = commandList;
 	}
 
 }

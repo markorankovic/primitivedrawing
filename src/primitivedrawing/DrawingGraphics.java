@@ -2,8 +2,10 @@ package primitivedrawing;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
-public class DrawingGraphics extends Canvas implements DrawingContext  {
+public class DrawingGraphics extends Canvas implements DrawingContext, FocusListener  {
 
 	private static final long serialVersionUID = 1L;
 
@@ -12,9 +14,10 @@ public class DrawingGraphics extends Canvas implements DrawingContext  {
 	Graphic rootGraphic = new Graphic();
 	
 	public DrawingGraphics(int width, int height) {
-		super.setSize(width, height);;
+		super.setSize(width, height);
+		this.addFocusListener(this);
 	}
-	
+		
 	@Override
 	public void paint(Graphics g) {
 		rootGraphic.drawTree(g);
@@ -22,12 +25,12 @@ public class DrawingGraphics extends Canvas implements DrawingContext  {
 		
 	@Override
 	public void clear() {
-		this.getGraphics().clearRect(0, 0, this.getWidth(), this.getHeight());
+		rootGraphic.children.clear();
 	}
 
 	@Override
 	public void reset() {
-		
+		currentPosition = new Position();
 	}
 
 	@Override
@@ -56,9 +59,20 @@ public class DrawingGraphics extends Canvas implements DrawingContext  {
 	}
 
 	@Override
-	public void repaint() {
-		System.out.println(getWidth());
-		this.repaint(0, 0, this.getWidth(), this.getHeight());
+	public void focusGained(FocusEvent e) {
+		System.out.println(5);
+		repaint();
 	}
 
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getFocus() {
+		this.requestFocus();
+	}
+	
 }
