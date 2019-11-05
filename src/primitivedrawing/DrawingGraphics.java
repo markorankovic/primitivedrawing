@@ -8,18 +8,18 @@ public class DrawingGraphics extends Canvas implements DrawingContext  {
 	private static final long serialVersionUID = 1L;
 
 	Position currentPosition = new Position();
+		
+	Graphic rootGraphic = new Graphic();
 	
-	public DrawingGraphics() {
-		System.out.println(this.getGraphics());
+	public DrawingGraphics(int width, int height) {
+		super.setSize(width, height);;
 	}
-	
-	Graphic rootGraphic;
 	
 	@Override
 	public void paint(Graphics g) {
 		rootGraphic.drawTree(g);
 	}
-	
+		
 	@Override
 	public void clear() {
 		this.getGraphics().clearRect(0, 0, this.getWidth(), this.getHeight());
@@ -37,22 +37,28 @@ public class DrawingGraphics extends Canvas implements DrawingContext  {
 
 	@Override
 	public void drawTo(int x, int y) {
-		//this.getGraphics().drawLine(currentPosition.x, currentPosition.y, x, y);
+		rootGraphic.add(new Line(new Position(currentPosition.x, currentPosition.y), new Position(x, y)));
 	}
 
 	@Override
 	public void drawRect(int width, int height) {
-		//this.getGraphics().drawRect(currentPosition.x, currentPosition.y, width, height);
+		rootGraphic.add(new Rect(new Position(currentPosition.x, currentPosition.y), width, height));
 	}
 
 	@Override
 	public void drawCircle(int r) {
-		//this.getGraphics().drawOval(currentPosition.x, currentPosition.y, r * 2, r * 2);
+		rootGraphic.add(new Circle(currentPosition, r));
 	}
 
 	@Override
 	public void drawTriangle(int width, int height) {
-		//this.getGraphics().drawPolyline(new int[]{currentPosition.x, currentPosition.x + width, currentPosition.x + width/2}, new int[]{currentPosition.y - height, currentPosition.y - height, currentPosition.y}, 3); 
+		rootGraphic.add(new Triangle(new Position(currentPosition.x, currentPosition.y), width, height));
+	}
+
+	@Override
+	public void repaint() {
+		System.out.println(getWidth());
+		this.repaint(0, 0, this.getWidth(), this.getHeight());
 	}
 
 }

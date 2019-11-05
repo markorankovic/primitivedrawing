@@ -9,5 +9,6 @@ public interface DrawingContext {
 	public void drawRect(int width, int height);
 	public void drawCircle(int r);
 	public void drawTriangle(int width, int height);
+	public void repaint();
 	
 }

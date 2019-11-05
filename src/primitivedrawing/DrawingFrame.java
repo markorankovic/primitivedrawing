@@ -9,5 +9,5 @@ public class DrawingFrame extends JFrame {
 	public DrawingFrame(String arg0) {
 		super(arg0);
 	}
-
+	
 }
