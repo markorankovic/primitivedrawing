@@ -16,6 +16,7 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 	private static final long serialVersionUID = 1L;
 
 	Position currentPosition = new Position();
+	Color currentColor = new Color(0, 0, 0);
 		
 	Graphic rootGraphic = new Graphic();
 	
@@ -26,6 +27,7 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 		
 	@Override
 	public void paint(Graphics g) {
+		g.setColor(currentColor);
 		rootGraphic.drawTree(g);
 	}
 		
@@ -66,7 +68,6 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		System.out.println(5);
 		repaint();
 	}
 
@@ -79,11 +80,8 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 	}
 
 	@Override
-	public void setColor(int r, int g, int b) {
-		System.out.println(this.getGraphics());
-		this.getGraphics().setColor(new Color(r, g, b));
-		System.out.println(b);
-		System.out.println(this.getGraphics().getColor());
+	public void setColor(int r, int g, int b) { // Still not working yet!
+		this.currentColor = new Color(r, g, b);
 	}
 	
 }

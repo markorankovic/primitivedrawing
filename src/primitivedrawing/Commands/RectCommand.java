@@ -8,6 +8,7 @@ public class RectCommand extends DrawCommand {
 
 	public RectCommand(CommandProcessor processor) {
 		super(processor);
+		this.commandAsString = "rect";
 		this.numberOfArguments = 2;
 	}
 		

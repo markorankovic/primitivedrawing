@@ -9,6 +9,7 @@ public class CircleCommand extends DrawCommand {
 	public CircleCommand(CommandProcessor processor) {
 		super(processor);
 		numberOfArguments = 1;
+		this.commandAsString = "circle";
 	}
 	
 	@Override

@@ -4,11 +4,12 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
-public class SetColorCommand extends DrawCommand {
+public class ColorCommand extends DrawCommand {
 
-	public SetColorCommand(CommandProcessor processor) {
+	public ColorCommand(CommandProcessor processor) {
 		super(processor);
 		numberOfArguments = 3;
+		this.commandAsString = "color";
 	}
 	
 	@Override

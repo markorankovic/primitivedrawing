@@ -9,6 +9,7 @@ public class TriangleCommand extends DrawCommand {
 	public TriangleCommand(CommandProcessor processor) {
 		super(processor);
 		numberOfArguments = 2;
+		this.commandAsString = "triangle";
 	}
 
 	@Override

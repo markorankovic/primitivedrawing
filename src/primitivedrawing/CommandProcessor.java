@@ -1,7 +1,10 @@
 package primitivedrawing;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -11,8 +14,10 @@ import primitivedrawing.Commands.RunCommand;
 
 public class CommandProcessor {
 
-	static HashMap<String, Class<? extends Command>> commandReference = new HashMap<String, Class<? extends Command>>();
+	public static HashMap<String, Class<? extends Command>> commandReference = new HashMap<String, Class<? extends Command>>();
 	
+	
+	ArrayList<Command> commandHistory = new ArrayList<Command>();
 	ArrayList<Command> commands = new ArrayList<Command>();
 	
 	CommandTextArea commandList;
@@ -35,6 +40,7 @@ public class CommandProcessor {
 	
 	void addCommand(Command command) {
 		commands.add(command);
+		commandHistory.add(command);
 	}
 	
 	void removeAllCommands() {
@@ -91,27 +97,55 @@ public class CommandProcessor {
 		}
 	}
 	
-	void loadCommandsFromFile(String fileName) {
-		ArrayList<String> input = readInputFromFile(fileName);
-		ArrayList<Command> commandList = new ArrayList<Command>();
-		for (String line : input) {
-			parseCommandString(line);
+	ArrayList<String> commandsToStrings() {
+		ArrayList<String> result = new ArrayList<String>();
+		for (Command command : commandHistory) {
+			result.add(command.toString());
 		}
-		commands = commandList;
+		return result;
 	}
 	
-	ArrayList<String> readInputFromFile(String fileName) {
+	void saveCommandsToFile(File file) {
+		String result = "";
+		System.out.println(commandsToStrings());
+		for (String command : commandsToStrings()) {
+			result += command + "\n";
+			System.out.println(result);
+		}
+		BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter(file));
+			writer.write(result);
+			writer.close();
+		} catch (IOException e) { }
+	}
+	
+	void clearCommandList() {
+		commandList.setText("");
+	}
+	
+	void loadCommandsFromFile(File file) {
+		clearCommandList();
+		commands.clear();
+		ArrayList<String> input = readInputFromFile(file);
+		for (String line : input) {
+			if (parseCommandString(line) == null) {
+				commands.clear();
+				return;
+			}
+			commandList.setText(commandList.getText() + line + "\n");
+		}
+	}
+	
+	private ArrayList<String> readInputFromFile(File file) {
 		ArrayList<String> input = new ArrayList<String>();
-		File file = new File(fileName);
 		try {
 			Scanner scanner = new Scanner(file);
 			while (scanner.hasNextLine()) {
 				input.add(scanner.nextLine());
 			}
 			scanner.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		} catch (FileNotFoundException e) { }
 		return input;
 	}
 	

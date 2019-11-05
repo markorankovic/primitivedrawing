@@ -8,6 +8,7 @@ public class ResetCommand extends DrawCommand {
 
 	public ResetCommand(CommandProcessor processor) {
 		super(processor);
+		this.commandAsString = "reset";
 	}
 
 	@Override

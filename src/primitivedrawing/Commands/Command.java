@@ -8,6 +8,8 @@ import primitivedrawing.Executable;
 public class Command implements Executable {
 	
 	CommandProcessor processor;
+	
+	String commandAsString = "Command"; // Command as string so the command can be saved into a file. 
 		
 	public Command(CommandProcessor processor) {
 		this.processor = processor;
@@ -33,7 +35,19 @@ public class Command implements Executable {
 	}
 	
 	public boolean argumentsValid() {
-		return validNumberOfArguments() && arguments.size() == 0;
+		return validNumberOfArguments() && numberOfArguments == 0;
+	}
+	
+	public String toString() {
+		String result = "";
+		result += commandAsString + " ";
+		for (int i = 0; i < arguments.size(); i++) {
+			result += arguments.get(i);
+			if (i < arguments.size() - 1) {
+				result += ", ";
+			}
+		}
+		return result;
 	}
 
 }

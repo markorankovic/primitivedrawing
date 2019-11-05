@@ -9,6 +9,7 @@ public class DrawToCommand extends DrawCommand {
 	public DrawToCommand(CommandProcessor processor) {
 		super(processor);
 		numberOfArguments = 2;
+		this.commandAsString = "drawto";
 	}
 
 	@Override

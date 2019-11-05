@@ -8,6 +8,7 @@ public class ClearCommand extends DrawCommand {
 
 	public ClearCommand(CommandProcessor processor) {
 		super(processor);
+		this.commandAsString = "clear";
 	}
 
 	@Override

@@ -8,6 +8,7 @@ public class PositionCommand extends DrawCommand {
 
 	public PositionCommand(CommandProcessor processor) {
 		super(processor);
+		this.commandAsString = "position";
 		numberOfArguments = 2;
 	}
 
