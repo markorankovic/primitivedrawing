@@ -1,12 +1,16 @@
-package primitivedrawing;
+package primitivedrawing.Commands;
 
-public class RectCommand extends DrawCommand {
+import primitivedrawing.CommandProcessor;
+import primitivedrawing.DrawingCommandProcessor;
+import primitivedrawing.DrawingContext;
 
-	public RectCommand(CommandProcessor processor) {
+public class SetColorCommand extends DrawCommand {
+
+	public SetColorCommand(CommandProcessor processor) {
 		super(processor);
-		this.numberOfArguments = 2;
+		numberOfArguments = 3;
 	}
-		
+	
 	@Override
 	public void execution() {
 		DrawingContext dc = ((DrawingCommandProcessor) processor).dc;
@@ -15,14 +19,15 @@ public class RectCommand extends DrawCommand {
 			return;
 		}
 		try {
-			dc.drawRect(Integer.parseInt(arguments.get(0)), Integer.parseInt(arguments.get(1)));
+			dc.setColor(Integer.parseInt(arguments.get(0)), Integer.parseInt(arguments.get(1)), Integer.parseInt(arguments.get(2)));
 		} catch (Exception e) {
 			System.out.println("Invalid argument(s)");
 			return;
 		}
 	}
-		
+	
 	@Override
+	public
 	boolean argumentsValid() {
 		return validNumberOfArguments() && validArgumentTypes();
 	}
@@ -32,10 +37,11 @@ public class RectCommand extends DrawCommand {
 		try {
 			Integer.parseInt(arguments.get(0));
 			Integer.parseInt(arguments.get(1));
+			Integer.parseInt(arguments.get(2));
 		} catch(Exception e) {
 			return false;
 		}
 		return true;
 	}
-	
+
 }
