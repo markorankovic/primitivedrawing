@@ -1,5 +1,7 @@
 package primitivedrawing;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
@@ -9,9 +11,9 @@ public class CommandFrame extends javax.swing.JFrame {
 	
 	CommandProcessor commandProcessor;
 	
-	CommandTextArea commandList = new CommandTextArea(false);
+	CommandTextArea commandList = new CommandTextArea(false, this);
 	
-	CommandTextArea commandEntry = new CommandTextArea(true);
+	CommandTextArea commandEntry = new CommandTextArea(true, this);
 	
 	public CommandFrame(CommandProcessor commandProcessor) {
 		JPanel listPanel = new JPanel();
