@@ -1,4 +1,5 @@
 # primitivedrawing
+Created by Marko Ranković
 
 This project demonstrates the ability to draw basic primitives using string commands which subsequently are parsed into command classes to then be executed all together. Commands are not case sensitive.
 
