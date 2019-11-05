@@ -2,10 +2,12 @@ package primitivedrawing;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import primitivedrawing.Commands.Command;
+import primitivedrawing.Commands.RunCommand;
 
 public class CommandProcessor {
 
@@ -93,9 +95,7 @@ public class CommandProcessor {
 		ArrayList<String> input = readInputFromFile(fileName);
 		ArrayList<Command> commandList = new ArrayList<Command>();
 		for (String line : input) {
-			ArrayList<String> processedLine = getProcessedInput(line);
-			Command command = createCommand(processedLine);
-			commandList.add(command);
+			parseCommandString(line);
 		}
 		commands = commandList;
 	}

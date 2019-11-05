@@ -1,9 +1,15 @@
 package primitivedrawing;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import primitivedrawing.Graphics.Circle;
+import primitivedrawing.Graphics.Graphic;
+import primitivedrawing.Graphics.Line;
+import primitivedrawing.Graphics.Rect;
+import primitivedrawing.Graphics.Triangle;
 
 public class DrawingGraphics extends Canvas implements DrawingContext, FocusListener  {
 
@@ -65,14 +71,19 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 	}
 
 	@Override
-	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void focusLost(FocusEvent e) { }
 
 	@Override
 	public void getFocus() {
 		this.requestFocus();
+	}
+
+	@Override
+	public void setColor(int r, int g, int b) {
+		System.out.println(this.getGraphics());
+		this.getGraphics().setColor(new Color(r, g, b));
+		System.out.println(b);
+		System.out.println(this.getGraphics().getColor());
 	}
 	
 }

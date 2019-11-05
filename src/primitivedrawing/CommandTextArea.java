@@ -21,9 +21,7 @@ public class CommandTextArea extends TextArea implements KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-		
-	}
+	public void keyTyped(KeyEvent e) { }
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -38,8 +36,6 @@ public class CommandTextArea extends TextArea implements KeyListener {
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		
-	}
+	public void keyReleased(KeyEvent e) { }
 
 }
