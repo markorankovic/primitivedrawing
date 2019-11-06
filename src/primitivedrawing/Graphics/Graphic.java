@@ -3,6 +3,7 @@ package primitivedrawing.Graphics;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+// Entity to be rendered onto a canvas
 public class Graphic {
 
 	public ArrayList<Graphic> children = new ArrayList<Graphic>();

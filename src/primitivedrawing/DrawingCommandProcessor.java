@@ -13,10 +13,11 @@ import primitivedrawing.Commands.TriangleCommand;
 
 public class DrawingCommandProcessor extends CommandProcessor {
 	
-	public DrawingContext dc;
+	public DrawingContext dc; // Interface for drawing
 
+	// Associates input command strings with Command classes
 	@Override
-	void initializeCommandReference() {
+	void initializeCommandReference() { 
 		commandReference.put("rect", (Class<? extends Command>) RectCommand.class);
 		commandReference.put("circle", (Class<? extends Command>) CircleCommand.class);
 		commandReference.put("triangle", (Class<? extends Command>) TriangleCommand.class);
@@ -38,10 +39,11 @@ public class DrawingCommandProcessor extends CommandProcessor {
 		this.dc = dc;
 	}
 	
-	void setFocusToGraphics() { dc.getFocus(); }
+	void setFocusToGraphics() { dc.getFocus(); } // Puts focus back on the drawing context
 	
+	// Does the same as its superclass but puts focus on the drawing context if the Run Command is executed
 	@Override
-	Command parseCommandString(String commandString) {
+	Command parseCommandString(String commandString) { 
 		Command command = super.parseCommandString(commandString);
 		if (command == null) {
 			return null;

@@ -4,6 +4,7 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
+// Command for drawing a triangle
 public class TriangleCommand extends DrawCommand {
 
 	public TriangleCommand(CommandProcessor processor) {

@@ -4,6 +4,7 @@ import java.awt.TextArea;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+// TextArea which allows inputting of commands
 public class CommandTextArea extends TextArea implements KeyListener {
 
 	private static final long serialVersionUID = 1L;

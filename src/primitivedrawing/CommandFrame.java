@@ -1,8 +1,6 @@
 package primitivedrawing;
 
-import java.awt.event.KeyEvent;
 import java.io.File;
-
 import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
@@ -10,6 +8,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+// Frame which has one section for inputting commands and the other for displaying them
 public class CommandFrame extends PrimitiveFrame {
 
 	private static final long serialVersionUID = 1L;

@@ -4,6 +4,7 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
+// Command which draws a rectangle
 public class RectCommand extends DrawCommand {
 
 	public RectCommand(CommandProcessor processor) {

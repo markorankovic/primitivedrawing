@@ -11,6 +11,7 @@ import primitivedrawing.Graphics.Line;
 import primitivedrawing.Graphics.Rect;
 import primitivedrawing.Graphics.Triangle;
 
+// Canvas for drawing 2D graphics
 public class DrawingGraphics extends Canvas implements DrawingContext, FocusListener  {
 
 	private static final long serialVersionUID = 1L;
@@ -27,8 +28,8 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 		
 	@Override
 	public void paint(Graphics g) {
-		g.setColor(currentColor);
-		rootGraphic.drawTree(g);
+		g.setColor(currentColor); // Updates the current color for the graphics
+		rootGraphic.drawTree(g); // Draws all the primitives created
 	}
 		
 	@Override
@@ -80,7 +81,7 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 	}
 
 	@Override
-	public void setColor(int r, int g, int b) { // Still not working yet!
+	public void setColor(int r, int g, int b) {
 		this.currentColor = new Color(r, g, b);
 	}
 	

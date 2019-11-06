@@ -1,5 +1,6 @@
 package primitivedrawing;
 
+// Any Graphics context which implements this interface will support the following methods
 public interface DrawingContext {
 
 	public void clear();
