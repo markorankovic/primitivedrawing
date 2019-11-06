@@ -19,6 +19,7 @@ public class Rect extends Sprite {
 	@Override
 	public
 	void draw(Graphics g) {
+		super.draw(g);
 		g.drawRect(position.x, position.y, width, height);
 	}
 	

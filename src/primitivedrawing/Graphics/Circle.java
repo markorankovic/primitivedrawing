@@ -17,6 +17,7 @@ public class Circle extends Sprite {
 	@Override
 	public
 	void draw(Graphics g) {
+		super.draw(g);
 		g.drawOval(position.x, position.y, radius * 2, radius * 2);
 	}
 	

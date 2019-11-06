@@ -1,5 +1,6 @@
 package primitivedrawing.Graphics;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -10,6 +11,8 @@ import java.util.ArrayList;
  */
 public class Sprite {
 
+	public Color color = new Color(0);
+	
 	public ArrayList<Sprite> children = new ArrayList<Sprite>();
 	
 	/**
@@ -30,8 +33,10 @@ public class Sprite {
 
 	/**
 	 * Draws the individual Sprite.
-	 * @param graphics for which the individial Sprite will be drawn to.
+	 * @param graphics for which the individual Sprite will be drawn to.
 	 */
-	public void draw(Graphics graphics) { }
+	public void draw(Graphics graphics) { 
+		graphics.setColor(color);
+	}
 	
 }

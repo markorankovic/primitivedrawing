@@ -17,6 +17,7 @@ public class Line extends Sprite {
 	@Override
 	public
 	void draw(Graphics g) {
+		super.draw(g);
 		g.drawLine(startPosition.x, startPosition.y, endPosition.x, endPosition.y);
 	}
 	

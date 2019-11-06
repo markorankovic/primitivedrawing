@@ -19,6 +19,7 @@ public class Triangle extends Sprite {
 	@Override
 	public
 	void draw(Graphics g) {
+		super.draw(g);
 		Position p = position;
 		g.drawPolygon(new int[]{p.x, p.x + width, p.x + width/2}, new int[]{p.y + height, p.y + height, p.y}, 3);
 	}

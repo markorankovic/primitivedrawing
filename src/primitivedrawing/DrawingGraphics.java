@@ -32,7 +32,6 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 		
 	@Override
 	public void paint(Graphics g) {
-		g.setColor(currentColor); // Updates the current color for the graphics
 		rootGraphic.drawTree(g); // Draws all the primitives created
 	}
 		
@@ -53,22 +52,30 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 
 	@Override
 	public void drawTo(int x, int y) {
-		rootGraphic.add(new Line(new Position(currentPosition.x, currentPosition.y), new Position(x, y)));
+		Line line = new Line(new Position(currentPosition.x, currentPosition.y), new Position(x, y));
+		line.color = currentColor;
+		rootGraphic.add(line);
 	}
 
 	@Override
 	public void drawRect(int width, int height) {
-		rootGraphic.add(new Rect(new Position(currentPosition.x, currentPosition.y), width, height));
+		Rect rect = new Rect(new Position(currentPosition.x, currentPosition.y), width, height);
+		rect.color = currentColor;
+		rootGraphic.add(rect);
 	}
 
 	@Override
 	public void drawCircle(int r) {
-		rootGraphic.add(new Circle(currentPosition, r));
+		Circle circle = new Circle(currentPosition, r);
+		circle.color = currentColor;
+		rootGraphic.add(circle);
 	}
 
 	@Override
 	public void drawTriangle(int width, int height) {
-		rootGraphic.add(new Triangle(new Position(currentPosition.x, currentPosition.y), width, height));
+		Triangle triangle = new Triangle(new Position(currentPosition.x, currentPosition.y), width, height);
+		triangle.color = currentColor;
+		rootGraphic.add(triangle);
 	}
 
 	@Override
