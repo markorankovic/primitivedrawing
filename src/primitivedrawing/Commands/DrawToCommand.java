@@ -4,7 +4,11 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
-// Command which draws a line to a point
+/**
+ * Command which draws a line to a point.
+ * @author marko
+ *
+ */
 public class DrawToCommand extends DrawCommand {
 
 	public DrawToCommand(CommandProcessor processor) {

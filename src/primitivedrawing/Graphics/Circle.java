@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import primitivedrawing.Position;
 
-public class Circle extends Graphic {
+public class Circle extends Sprite {
 	
 	int radius;
 	Position position;
@@ -15,6 +15,7 @@ public class Circle extends Graphic {
 	}
 	
 	@Override
+	public
 	void draw(Graphics g) {
 		g.drawOval(position.x, position.y, radius * 2, radius * 2);
 	}

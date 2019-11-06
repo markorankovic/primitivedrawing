@@ -4,6 +4,11 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
+/**
+ * Command which sets the color value for the given context.
+ * @author marko
+ *
+ */
 public class ColorCommand extends DrawCommand {
 
 	public ColorCommand(CommandProcessor processor) {

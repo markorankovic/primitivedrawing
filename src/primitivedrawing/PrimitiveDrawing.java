@@ -2,11 +2,22 @@ package primitivedrawing;
 
 import java.awt.Component;
 
-public class Main {
+/**
+ * Class which creates an instance of the PrimitiveDrawing program.
+ * @author marko
+ *
+ */
 
-	public static void main(String[] args) {
+public class PrimitiveDrawing {
+	
+	/**
+	 * The program creates two separate frames, one for the command line, 
+	 * the other for rendering the graphics.
+	 */
+	
+	public PrimitiveDrawing() {
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
-				
+		
 		int width = 600;
 		int height = 600;
 				
@@ -23,6 +34,10 @@ public class Main {
 		commandFrame.setTitle("commands");
 		commandFrame.setSize(w, h);
 		commandFrame.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new PrimitiveDrawing();
 	}
 
 }

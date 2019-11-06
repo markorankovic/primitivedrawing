@@ -2,13 +2,21 @@ package primitivedrawing;
 
 import javax.swing.JFrame;
 
-public class PrimitiveFrame extends JFrame {
+/**
+ * JFrame which the application occupies. 
+ * @author marko
+ *
+ */
+public abstract class PrimitiveFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Any subclass instance that closes will terminate the application. 
+	 */
 	public PrimitiveFrame() {
 		super();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Program exits on close of any frame.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 	
 	}
 	
 }

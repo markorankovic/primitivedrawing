@@ -1,5 +1,11 @@
 package primitivedrawing;
 
+/**
+ * Class which packages together 2D coordinates.
+ * @author marko
+ *
+ */
+
 public class Position {
 
 	public int x = 0;

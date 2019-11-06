@@ -4,6 +4,11 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
+/**
+ * Command which clears the underlying canvas.
+ * @author marko
+ *
+ */
 public class ClearCommand extends DrawCommand {
 
 	public ClearCommand(CommandProcessor processor) {

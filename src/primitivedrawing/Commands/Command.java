@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import primitivedrawing.CommandProcessor;
 import primitivedrawing.Executable;
 
+/**
+ * Command which provides default features for its subclasses to be executed by the processor.
+ * @author marko
+ *
+ */
 public abstract class Command implements Executable {
 	
 	CommandProcessor processor;

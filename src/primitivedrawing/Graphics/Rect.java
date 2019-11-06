@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import primitivedrawing.Position;
 
-public class Rect extends Graphic {
+public class Rect extends Sprite {
 
 	int width;
 	int height;
@@ -17,6 +17,7 @@ public class Rect extends Graphic {
 	}
 	
 	@Override
+	public
 	void draw(Graphics g) {
 		g.drawRect(position.x, position.y, width, height);
 	}

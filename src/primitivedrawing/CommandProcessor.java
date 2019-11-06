@@ -12,6 +12,12 @@ import java.util.Scanner;
 import primitivedrawing.Commands.Command;
 import primitivedrawing.Commands.RunCommand;
 
+/**
+ * Class for processing and running Commands from a user input.
+ * @author marko
+ *
+ */
+
 public class CommandProcessor {
 
 	// Association between the command as a String and the command as a class
@@ -28,8 +34,12 @@ public class CommandProcessor {
 	
 	void initializeCommandReference() { }
 					
-	// Returns an input processed to split the command from its arguments
-	ArrayList<String> getProcessedInput(String input) {
+	/**
+	 * Returns an input processed to split the command from its arguments.
+	 * @param input
+	 * @return
+	 */
+	public ArrayList<String> getProcessedInput(String input) {
 		String lowercaseInput = input.toLowerCase();
 		System.out.println(lowercaseInput);
 		// Ensures input is in the format command arg1, arg2, arg3 ...
@@ -44,14 +54,19 @@ public class CommandProcessor {
 		return processedInput;
 	}
 	
-	// Adds a Command both to the list to be executed and the history of Commands
-	void addCommand(Command command) {
+	/**
+	 * Adds a Command both to the list to be executed and the history of Commands.
+	 * @param command
+	 */
+	public void addCommand(Command command) {
 		commands.add(command);
 		commandHistory.add(command);
 	}
 	
-	// Removes all Commands due for execution
-	void removeAllCommands() {
+	/**
+	 * Removes all Commands due for execution
+	 */
+	public void removeAllCommands() {
 		commands.removeAll(commands);
 	}
 	
@@ -62,8 +77,11 @@ public class CommandProcessor {
 		}
 	}
 		
-	/* Takes an input string and creates the corresponding Command instance
-	 * If the command is a Run Command then it executes all other Commands
+	/**
+	 * Takes an input string and creates the corresponding Command instance.
+	 * If the command is a Run Command then it executes all other Commands.
+	 * @param commandString
+	 * @return
 	 */
 	Command parseCommandString(String commandString) {
 		Command command = createCommand(getProcessedInput(commandString));
@@ -80,15 +98,21 @@ public class CommandProcessor {
 		return command;
 	}
 	
-	// Runs all typed commands
+	/**
+	 * Runs all typed commands
+	 */
 	void runCommands() {
 		for (Command command : commands) {
 			command.execution();
 		}
 	}
 	
-	// Creates a Command from processed user input
-	Command createCommand(ArrayList<String> processedInput) {
+	/**
+	 * Creates a Command from processed user input.
+	 * @param processedInput
+	 * @return
+	 */
+	public Command createCommand(ArrayList<String> processedInput) {
 		try {
 			String key = processedInput.get(0);
 			if (commandReference.containsKey(key)) {
@@ -110,8 +134,11 @@ public class CommandProcessor {
 		}
 	}
 	
-	// Gets list of commands executed to String
-	ArrayList<String> commandsToStrings() {
+	/**
+	 * Gets list of commands executed to String
+	 * @return Commands converted to strings
+	 */
+	public ArrayList<String> commandsToStrings() {
 		ArrayList<String> result = new ArrayList<String>();
 		for (Command command : commandHistory) {
 			result.add(command.toString());
@@ -142,8 +169,11 @@ public class CommandProcessor {
 		}
 	}
 	
-	// Loads command line input from file
-	void loadCommandsFromFile(File file) {
+	/**
+	 * Loads command line input from file
+	 * @param file to upload
+	 */
+	public void loadCommandsFromFile(File file) {
 		clearCommandList();
 		commands.clear();
 		ArrayList<String> input = readInputFromFile(file);

@@ -6,12 +6,16 @@ import java.awt.Graphics;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import primitivedrawing.Graphics.Circle;
-import primitivedrawing.Graphics.Graphic;
 import primitivedrawing.Graphics.Line;
 import primitivedrawing.Graphics.Rect;
+import primitivedrawing.Graphics.Sprite;
 import primitivedrawing.Graphics.Triangle;
 
-// Canvas for drawing 2D graphics
+/**
+ * Canvas for drawing 2D graphics.
+ * @author marko
+ *
+ */
 public class DrawingGraphics extends Canvas implements DrawingContext, FocusListener  {
 
 	private static final long serialVersionUID = 1L;
@@ -19,7 +23,7 @@ public class DrawingGraphics extends Canvas implements DrawingContext, FocusList
 	Position currentPosition = new Position();
 	Color currentColor = new Color(0, 0, 0);
 		
-	Graphic rootGraphic = new Graphic();
+	Sprite rootGraphic = new Sprite();
 	
 	public DrawingGraphics(int width, int height) {
 		super.setSize(width, height);

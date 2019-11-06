@@ -11,6 +11,11 @@ import primitivedrawing.Commands.ResetCommand;
 import primitivedrawing.Commands.RunCommand;
 import primitivedrawing.Commands.TriangleCommand;
 
+/**
+ * CommandProcessor intended for processing and executing commands for drawing graphics
+ * @author marko
+ *
+ */
 public class DrawingCommandProcessor extends CommandProcessor {
 	
 	public DrawingContext dc; // Interface for drawing

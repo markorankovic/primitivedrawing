@@ -8,7 +8,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-// Frame which has one section for inputting commands and the other for displaying them
+/**
+ * This class is a frame which holds the command line interface.
+ * @author marko
+ *
+ */
+
 public class CommandFrame extends PrimitiveFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -30,7 +35,11 @@ public class CommandFrame extends PrimitiveFrame {
 		createMenuBar();
 	}
 	
-	void openFile() {
+	/**
+	 * Opens a dialog for opening a file to be sent to the command processor.
+	 */
+	
+	public void openFile() {
 	    JFileChooser chooser = new JFileChooser();
         int returnValue = chooser.showOpenDialog( null ) ;
         if (returnValue == JFileChooser.APPROVE_OPTION ) {
@@ -39,7 +48,11 @@ public class CommandFrame extends PrimitiveFrame {
         }
 	}
 	
-	void saveFile() {
+	/**
+	 * Opens a dialog for saving a file to be sent to the command processor.
+	 */
+	
+	public void saveFile() {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Specify a file to save");   
 		 
@@ -52,6 +65,7 @@ public class CommandFrame extends PrimitiveFrame {
 		}	
 	}
 	
+	// Creates the menu bar for opening and/or saving a file.
     private void createMenuBar() {
         var menuBar = new JMenuBar();
 

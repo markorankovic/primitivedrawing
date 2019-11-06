@@ -4,6 +4,11 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
+/**
+ * Command which resets position in the graphics context.
+ * @author marko
+ *
+ */
 public class ResetCommand extends DrawCommand {
 
 	public ResetCommand(CommandProcessor processor) {

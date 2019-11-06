@@ -4,7 +4,11 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
-// Command which alters the drawing contexts current position
+/**
+ * Command which alters the drawing contexts current position.
+ * @author marko
+ *
+ */
 public class PositionCommand extends DrawCommand {
 
 	public PositionCommand(CommandProcessor processor) {

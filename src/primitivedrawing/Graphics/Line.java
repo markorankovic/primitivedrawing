@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import primitivedrawing.Position;
 
-public class Line extends Graphic {
+public class Line extends Sprite {
 
 	Position startPosition;
 	Position endPosition;
@@ -15,6 +15,7 @@ public class Line extends Graphic {
 	}
 	
 	@Override
+	public
 	void draw(Graphics g) {
 		g.drawLine(startPosition.x, startPosition.y, endPosition.x, endPosition.y);
 	}

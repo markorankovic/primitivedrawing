@@ -4,6 +4,12 @@ import primitivedrawing.CommandProcessor;
 import primitivedrawing.DrawingCommandProcessor;
 import primitivedrawing.DrawingContext;
 
+
+/**
+ * Command which creates a circle to be drawn in the context.
+ * @author marko
+ *
+ */
 public class CircleCommand extends DrawCommand {
 
 	public CircleCommand(CommandProcessor processor) {
