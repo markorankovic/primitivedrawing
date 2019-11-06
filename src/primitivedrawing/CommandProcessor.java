@@ -36,16 +36,13 @@ public class CommandProcessor {
 					
 	/**
 	 * Returns an input processed to split the command from its arguments.
-	 * @param input
-	 * @return
+	 * @param input command string.
 	 */
 	public ArrayList<String> getProcessedInput(String input) {
-		String lowercaseInput = input.toLowerCase();
-		System.out.println(lowercaseInput);
-		// Ensures input is in the format command arg1, arg2, arg3 ...
-		if (!lowercaseInput.matches("^((\\w+)( \\d+(, \\d+)*)?)$")) { 
+		if (!isValidCommandInput(input)) { 
 			return null;
 		}
+		String lowercaseInput = input.toLowerCase();
 		String[] lowercaseInputSeparatedBySpaceAndComma = lowercaseInput.split(" |, ");	
 		ArrayList<String> processedInput = new ArrayList<String>();
 		for (String str : lowercaseInputSeparatedBySpaceAndComma) {
@@ -55,10 +52,21 @@ public class CommandProcessor {
 	}
 	
 	/**
+	 * Returns whether or not the specified input is in the valid command format.
+	 * The command format is command arg1, arg2, arg3 ...
+	 * @param input command string.
+	 */
+	public boolean isValidCommandInput(String input) {
+		return input.toLowerCase().matches("^((\\w+)( \\d+(, \\d+)*)?)$");
+	}
+	
+	/**
 	 * Adds a Command both to the list to be executed and the history of Commands.
-	 * @param command
 	 */
 	public void addCommand(Command command) {
+		if (command == null) {
+			return;
+		}
 		commands.add(command);
 		commandHistory.add(command);
 	}
@@ -80,8 +88,7 @@ public class CommandProcessor {
 	/**
 	 * Takes an input string and creates the corresponding Command instance.
 	 * If the command is a Run Command then it executes all other Commands.
-	 * @param commandString
-	 * @return
+	 * @param commandString the command in String.
 	 */
 	Command parseCommandString(String commandString) {
 		Command command = createCommand(getProcessedInput(commandString));
