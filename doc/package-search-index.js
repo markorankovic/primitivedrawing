@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"primitivedrawing","l":"primitivedrawing"},{"m":"primitivedrawing","l":"primitivedrawing.Commands"},{"m":"primitivedrawing","l":"primitivedrawing.Graphics"},{"m":"primitivedrawing","l":"testing"}]
